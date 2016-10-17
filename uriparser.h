@@ -4,44 +4,22 @@
 #include <memory>
 
 using namespace std;
-//Abstract URI element
-//class URIElement
-//{
-//    public:
-//        URIElement(string&, string&);
-//        virtual ~URIElement();
-//        virtual string GetType();
-//        virtual string GetContent();
-//
-//    protected:
-//        string m_type;    
-//        string m_content;
-//};
 
 //Abstract URI parser
 class URIParser{
     public:
         URIParser(string&);
         virtual ~URIParser();
-        //string Get();
         virtual bool ParseIt(string&, string &) = 0;  
-        //virtual bool ParseIt(URIElement*, string &) = 0; 
+
+        inline string GetType() {return m_type;}
 
         static unique_ptr<URIParser> GetParser(string&);
 
     protected:
             
         string m_type;
-        //vector<string> m_vDelimiters;
 };
-
-//Scheme parser and element
-//Scheme element
-//class URIElementScheme: public URIElement{
-//    public:
-//        URIElementScheme();
-//    
-//};
 
 //Scheme parser
 class URIParserScheme: public URIParser {
@@ -50,14 +28,6 @@ class URIParserScheme: public URIParser {
         URIParserScheme();
         bool ParseIt(string&, string &);
 };
-
-//Authority parser and element
-//Authority element
-//class URIElementAuthority : public URIElement{
-//    public:
-//        URIElementAuthority();
-//
-//};
 
 //Authority parser
 class URIParserAuthority: public URIParser {
