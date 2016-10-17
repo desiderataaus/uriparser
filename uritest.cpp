@@ -8,8 +8,6 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 
-    //string uri1 = "abc://username:password@example.com:123/path/data?key=value&key2=value2#fragid1";
-    //string uri1 = "urn:example:mammal:monotreme:echidna";
 
     if (1 == argc){
         cout << "Usage: uriparser URI string to parse"<<endl;
