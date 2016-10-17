@@ -5,8 +5,6 @@
 
 using namespace std;
 
-void DontDelete() {;}
-
 void ParseAndDispay(std::unique_ptr<URIParser> pParser, string& URIstring)
 {
     string result = "Not set";
@@ -16,7 +14,7 @@ void ParseAndDispay(std::unique_ptr<URIParser> pParser, string& URIstring)
         pParser->ParseIt(URIstring, result);
     }
 
-    cout<<string(pParser->GetType())<<": "<<result<<endl;    
+    cout<<pParser->GetType()<<": "<<result<<endl;    
 }
 
 void ParseURI(string& URIstring, set<string>& typeset)
@@ -28,8 +26,8 @@ void ParseURI(string& URIstring, set<string>& typeset)
         std::unique_ptr<URIParser> pParser = URIParser::GetParser(type);
     
         if (pParser == nullptr){
-            cout << type << " is not a valid type. Ignore it.";
-            return;
+            cout << type << " is not a valid type. Ignore it."<<endl;
+            continue;
         }
 
         ParseAndDispay(move(pParser), URIstring);
